@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/ksambakdeplugin/%{name}-%{version}.tar.bz2
+# Source0-md5: c7f467463fcef82e50e4a99b1052aadf
 URL:		http://ksambakdeplugin.sourceforge.net
 BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.0
