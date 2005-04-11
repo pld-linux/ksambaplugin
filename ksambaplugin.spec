@@ -10,9 +10,8 @@ Source0:	http://dl.sourceforge.net/ksambakdeplugin/%{name}-%{version}.tar.bz2
 URL:		http://ksambakdeplugin.sourceforge.net/
 BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.0
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KSambaPlugin is a KDE 3 plugin for configuring a SAMBA server. It
@@ -32,21 +31,20 @@ Jest pomy¶lana jako pe³ne narzêdzie do konfiguracji SAMBY.
 %setup -q
 
 %build
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
+kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 %configure
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings/KDE
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_applnkdir}/{Settings/[!K]*,Settings/KDE}
+mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Settings/Network/*.desktop \
+      $RPM_BUILD_ROOT%{_desktopdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,5 +56,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkcm_kcmsambaconf.la
 %attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
 %{_datadir}/services/ksambakonqiplugin.desktop
-%{_applnkdir}/Settings/KDE/Network/kcmsambaconf.desktop
-%{_pixmapsdir}/*/*/*/kcmsambaconf.png
+%{_desktopdir}/kcmsambaconf.desktop
+%{_iconsdir}/*/*/*/kcmsambaconf.png
