@@ -2,7 +2,7 @@
 # - investigate the -fPIC flag on non x86_64 machines
 #
 Summary:	KSambaPlugin is KDE3 plugin for configuring SAMBA server
-Summary(pl):	KSambaPlugin jest pluginem dla KDE3 do konfiguracji serwera SAMBA
+Summary(pl.UTF-8):   KSambaPlugin jest pluginem dla KDE3 do konfiguracji serwera SAMBA
 Name:		ksambaplugin
 Version:	0.5
 Release:	1
@@ -24,12 +24,12 @@ options and a Konqueror properties dialog plugin for quickly
 configuring the SAMBA share options of a directory. It is meant to be
 a full SAMBA configuration tool.
 
-%description -l pl
-KSambaPlugin jest pluginem dla KDE3 s³u¿±cym do konfiguracji serwera
-SAMBA. Sk³ada siê z dwóch czê¶ci: modu³u KControl Center dla
-wszystkich opcji SAMBY i plugina w dialogu w³a¶ciwo¶ci w Konquerorze
-do szybkiego skonfigurowania opcji udostêpniania katalogu w SAMBIE.
-Jest pomy¶lana jako pe³ne narzêdzie do konfiguracji SAMBY.
+%description -l pl.UTF-8
+KSambaPlugin jest pluginem dla KDE3 sÅ‚uÅ¼Ä…cym do konfiguracji serwera
+SAMBA. SkÅ‚ada siÄ™ z dwÃ³ch czÄ™Å›ci: moduÅ‚u KControl Center dla
+wszystkich opcji SAMBY i plugina w dialogu wÅ‚aÅ›ciwoÅ›ci w Konquerorze
+do szybkiego skonfigurowania opcji udostÄ™pniania katalogu w SAMBIE.
+Jest pomyÅ›lana jako peÅ‚ne narzÄ™dzie do konfiguracji SAMBY.
 
 %prep
 %setup -q
