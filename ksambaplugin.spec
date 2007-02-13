@@ -2,7 +2,7 @@
 # - investigate the -fPIC flag on non x86_64 machines
 #
 Summary:	KSambaPlugin is KDE3 plugin for configuring SAMBA server
-Summary(pl.UTF-8):   KSambaPlugin jest pluginem dla KDE3 do konfiguracji serwera SAMBA
+Summary(pl.UTF-8):	KSambaPlugin jest pluginem dla KDE3 do konfiguracji serwera SAMBA
 Name:		ksambaplugin
 Version:	0.5
 Release:	1
