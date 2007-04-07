@@ -1,8 +1,5 @@
-# Todo:
-# - investigate the -fPIC flag on non x86_64 machines
-#
-Summary:	KSambaPlugin is KDE3 plugin for configuring SAMBA server
-Summary(pl.UTF-8):	KSambaPlugin jest pluginem dla KDE3 do konfiguracji serwera SAMBA
+Summary:	KSambaPlugin - KDE3 plugin for configuring SAMBA server
+Summary(pl.UTF-8):	KSambaPlugin - wtyczka KDE3 do konfiguracji serwera SAMBA
 Name:		ksambaplugin
 Version:	0.5
 Release:	1
@@ -25,11 +22,11 @@ configuring the SAMBA share options of a directory. It is meant to be
 a full SAMBA configuration tool.
 
 %description -l pl.UTF-8
-KSambaPlugin jest pluginem dla KDE3 służącym do konfiguracji serwera
-SAMBA. Składa się z dwóch części: modułu KControl Center dla
-wszystkich opcji SAMBY i plugina w dialogu właściwości w Konquerorze
-do szybkiego skonfigurowania opcji udostępniania katalogu w SAMBIE.
-Jest pomyślana jako pełne narzędzie do konfiguracji SAMBY.
+KSambaPlugin jest wtyczką KDE3 służącym do konfiguracji serwera SAMBA.
+Składa się z dwóch części: modułu KControl Center dla wszystkich opcji
+SAMBY i wtyczki okna dialogowego właściwości w Konquerorze do
+szybkiego skonfigurowania opcji udostępniania katalogu w SAMBIE. Jest
+pomyślana jako pełne narzędzie do konfiguracji SAMBY.
 
 %prep
 %setup -q
@@ -40,8 +37,7 @@ rm -rf shit
 
 %build
 kde_htmldir="%{_kdedocdir}"; export kde_htmldir
-# on x86_64 the linking stopped saying I need to pass that flag
-# so I do it
+# -fPIC is missing somewhere in build system
 export CXXFLAGS="-fPIC %{rpmcxxflags}"
 %configure
 
