@@ -12,6 +12,7 @@ URL:		http://ksambakdeplugin.sourceforge.net/
 BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,14 +32,14 @@ pomyślana jako pełne narzędzie do konfiguracji SAMBY.
 %prep
 %setup -q
 %patch0 -p1
-mv %{name}-%{version} shit
-mv shit/* .
-rm -rf shit
+mv %{name}-%{version}/* .
+rmdir %{name}-%{version}
+
+# -Wmissing-prototypes is not a valid g++ option, breaks detection of another options
+sed -i -e 's/\(CXXFLAGS=.*\) -Wmissing-prototypes/\1/' configure
 
 %build
 kde_htmldir="%{_kdedocdir}"; export kde_htmldir
-# -fPIC is missing somewhere in build system
-export CXXFLAGS="-fPIC %{rpmcxxflags}"
 %configure
 
 %{__make}
@@ -48,10 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Settings/Network/*.desktop \
-      $RPM_BUILD_ROOT%{_desktopdir}
+	DESTDIR=$RPM_BUILD_ROOT \
+	mydatadir=%{_desktopdir}/kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,5 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkcm_kcmsambaconf.la
 %attr(755,root,root) %{_libdir}/kde3/libkcm_kcmsambaconf.so
 %{_datadir}/services/ksambakonqiplugin.desktop
-%{_desktopdir}/kcmsambaconf.desktop
-%{_iconsdir}/*/*/*/kcmsambaconf.png
+%{_desktopdir}/kde/kcmsambaconf.desktop
+%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
